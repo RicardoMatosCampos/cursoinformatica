@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informática Pro - Informática Básica</title>
+    <link rel="icon" type="image/png" href="public/favicon.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/assets/css/style.css">
+    <!-- Styles from style.css are used instead of inline embedded styles -->
+</head>
+<body>
+    <!-- Overlay para fechar o menu mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-laptop-code text-accent"></i>
+                    <div>
+                        <h2>Informática Básica</h2>
+                        <span>ÁREA DE MEMBROS</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item nav-item-link">
+                    <i class="fa-solid fa-house"></i>
+                    Voltar ao Início
+                </a>
+            </nav>
+
+            <div class="modules-list" id="modules-sidebar-list">
+                <!-- Módulo 1 -->
+                <div class="module-item expanded">
+                    <div class="module-header">
+                        <span>Módulo 1: Introdução</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="lessons-list lessons-list-expanded">
+                        <div class="lesson-item active">
+                            <i class="fa-regular fa-circle-play"></i>
+                            <span>Aula 1: Conhecendo o Computador</span>
+                        </div>
+                        <div class="lesson-item">
+                            <i class="fa-regular fa-circle-play"></i>
+                            <span>Aula 2: Sistema Operacional</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Módulo 2 -->
+                <div class="module-item">
+                    <div class="module-header">
+                        <span>Módulo 2: Internet e Navegação</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="lessons-list lessons-list-expanded">
+                        <div class="lesson-item">
+                            <i class="fa-regular fa-circle-play"></i>
+                            <span>Aula 3: Como usar o Navegador</span>
+                        </div>
+                        <div class="lesson-item">
+                            <i class="fa-regular fa-circle-play"></i>
+                            <span>Aula 4: Segurança Básica</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navbar top -->
+            <header class="topbar">
+                <div class="d-flex align-center gap-15">
+                    <!-- Botão hamburguer (visivel apenas no mobile) -->
+                    <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb fw-600 text-primary">
+                        Informática Básica / Módulo 1 / Aula 1
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper flex-column min-h-content">
+                <div class="flex-1">
+                    
+                    <!-- Lesson View -->
+                    <div id="view-lesson" class="view-section view-section-visible">
+                        <div class="video-container" id="video-container">
+                            <div class="video-wrapper">
+                                <!-- COLOQUE O CÓDIGO DE INCORPORAÇÃO (IFRAME) DO VÍDEO ABAIXO -->
+                                <!-- Exemplo: <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+                                <div class="video-placeholder">
+                                    Espaço para o Vídeo<br>
+                                    <span>Insira o iframe no código HTML</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-details">
+                            <div class="lesson-header-info">
+                                <h2 id="lesson-title-display" class="lesson-title">Aula 1: Conhecendo o Computador</h2>
+                                <p class="lesson-desc">Nesta aula, você aprenderá os componentes básicos de um computador e como eles funcionam juntos.</p>
+                            </div>
+                            <div id="lesson-text-content" class="lesson-content">
+                                <!-- O conteúdo da apostila/aula será injetado aqui -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer do Aluno -->
+                <footer class="student-footer course-footer">
+                    <p>&copy; 2026 Informática Pro - Ensino de Qualidade.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="public/assets/js/curso-basico.js"></script>
+    <script src="public/assets/js/app-basico.js"></script>
+    <script>
+        // Mobile sidebar toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+        });
+        overlay.addEventListener('click', closeSidebar);
+
+        // Fecha o menu ao clicar em uma aula no mobile
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.lesson-item') && window.innerWidth <= 768) {
+                closeSidebar();
+            }
+        });
+    </script>
+</body>
+</html>

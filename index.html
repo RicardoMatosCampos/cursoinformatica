@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informática Pro - Plataforma de Cursos</title>
+    <meta name="description"
+        content="Acesse a plataforma de cursos Informática Pro. Evolua suas habilidades com nossos cursos completos.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="public/assets/css/landing.css">
+</head>
+
+<body>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo" aria-label="Página Inicial da Informática Pro">
+                <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                Informática Pro
+            </a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <div class="badge">Novo Portal de Acesso 🚀</div>
+            <h1>Transforme seu futuro com <span>Informática Pro</span></h1>
+            <p class="subtitle">Acesse nossa área de membros exclusiva e comece sua jornada de aprendizado hoje.
+                Acompanhe seu progresso, ganhe XP e emita seus certificados.</p>
+
+            <div class="actions">
+                <a href="curso-basico.html" class="btn btn-primary" aria-label="Acessar o Curso Básico">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                    Acessar Curso Básico
+                </a>
+                <a href="#" class="btn btn-advanced" style="opacity: 0.7; cursor: not-allowed;" onclick="event.preventDefault();" aria-label="Curso Avançado em Breve">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                    Curso Avançado (Em breve)
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <section class="features" id="cursos">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></div>
+            <h3 class="feature-title">Módulos Completos</h3>
+            <p class="feature-desc">Do básico ao avançado, aprenda no seu ritmo com trilhas estruturadas e práticas
+                focadas no mercado de trabalho.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></div>
+            <h3 class="feature-title">Gamificação</h3>
+            <p class="feature-desc">Suba de nível, acumule pontos XP e desbloqueie conquistas enquanto avança nos seus
+                estudos diariamente.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></div>
+            <h3 class="feature-title">Certificação</h3>
+            <p class="feature-desc">Ao concluir cada curso, emita automaticamente seu certificado de conclusão válido em
+                todo território nacional.</p>
+        </div>
+    </section>
+
+    <section class="testimonials" id="depoimentos">
+        <div class="section-header">
+            <h2>Deixe seu Depoimento</h2>
+            <p>Conte para nós como a plataforma tem ajudado você.</p>
+        </div>
+        <div class="form-container">
+            <form name="depoimentos" data-netlify="true" method="POST" class="custom-form">
+                <input type="hidden" name="Assunto" value="NOVO DEPOIMENTO - Site">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="depoimento-nome">Nome *</label>
+                        <input type="text" id="depoimento-nome" name="nome" required placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="depoimento-email">E-mail</label>
+                        <input type="email" id="depoimento-email" name="email" placeholder="Seu e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="depoimento-telefone">Contato</label>
+                        <input type="tel" id="depoimento-telefone" name="telefone" placeholder="WhatsApp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="depoimento-texto">Seu Depoimento *</label>
+                    <textarea id="depoimento-texto" name="depoimento" required rows="2" placeholder="Escreva o que achou dos cursos..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar Depoimento</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <h2>Perguntas Frequentes</h2>
+            <p>Ainda tem dúvidas? Envie sua pergunta para nossa equipe.</p>
+        </div>
+        <div class="form-container">
+            <form name="duvidas-faq" data-netlify="true" method="POST" class="custom-form">
+                <input type="hidden" name="Assunto" value="NOVA DUVIDA FAQ - Site">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="faq-nome">Nome *</label>
+                        <input type="text" id="faq-nome" name="nome" required placeholder="Como chamar?">
+                    </div>
+                    <div class="form-group">
+                        <label for="faq-email">E-mail</label>
+                        <input type="email" id="faq-email" name="email" placeholder="Para resposta">
+                    </div>
+                    <div class="form-group">
+                        <label for="faq-telefone">Contato</label>
+                        <input type="tel" id="faq-telefone" name="telefone" placeholder="WhatsApp">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="faq-pergunta">Sua Pergunta *</label>
+                    <textarea id="faq-pergunta" name="pergunta" required rows="2" placeholder="Escreva sua dúvida aqui..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar Pergunta</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <p>&copy; 2026 Informática Pro. Todos os direitos reservados.</p>
+        <div style="margin-top: 10px;">
+            <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
+        </div>
+    </footer>
+
+    <script>
+        // Envio dos formulários sem sair da página (AJAX)
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            
+            submitBtn.innerText = "Enviando...";
+            submitBtn.disabled = true;
+
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                alert("Sua mensagem foi enviada com sucesso! Obrigado.");
+                form.reset();
+            })
+            .catch((error) => {
+                alert("Ops! Houve um erro ao tentar enviar sua mensagem.");
+            })
+            .finally(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        };
+
+        // Adiciona o evento nos formulários do Netlify
+        document.querySelectorAll('form[data-netlify="true"]').forEach(form => {
+            form.addEventListener('submit', handleSubmit);
+        });
+    </script>
+</body>
+
+</html>

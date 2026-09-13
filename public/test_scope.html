@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="assets/js/app.js"></script>
+    <script>
+        window.onload = function() {
+            var globals = [
+                'init', 'renderSidebar', 'renderHomeGrid', 'updateProgress', 
+                'openHome', 'openLesson', 'updateCompleteButtonState', 
+                'renderQuiz', 'renderPhishingSimulator', 'addXP', 
+                'calculateLevel', 'getLevelTitle', 'updateGamificationUI',
+                'handleLogin', 'handleLogout', 'handleChangePassword'
+            ];
+            var leaked = globals.filter(g => typeof window[g] === 'function');
+            document.body.innerHTML = "<h1>Leaked globals:</h1><ul>" + leaked.map(g => "<li>" + g + "</li>").join('') + "</ul>";
+        };
+    </script>
+</head>
+<body></body>
+</html>
