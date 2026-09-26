@@ -12,7 +12,7 @@ const basicCourseData = {
                     id: "1-1",
                     title: "Aula 1: O que é Informática e a História dos Computadores",
                     duration: "Leitura (15 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/PMjH2tb2oqs",
                     attachmentUrl: "https://drive.google.com/drive/folders/1CuHTB-k4KFvEUGbm7L8-jZk599XTN3ZV?usp=sharing",
                     quiz: [
                         {
@@ -75,7 +75,7 @@ const basicCourseData = {
                     id: "1-2",
                     title: "Aula 2: Componentes Físicos (Hardware e Periféricos)",
                     duration: "Leitura (15 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/XVJTGhz4o-Y",
                     content: `<h2>📘 Apostila – Aula 2</h2>
 <h3>Tema: Componentes de um Computador (Hardware e Periféricos)</h3>
 <p>Na primeira aula, vimos o que é a informática e como ela evoluiu. Hoje, vamos "abrir o capô" e entender do que um computador é feito.</p>
@@ -150,7 +150,7 @@ const basicCourseData = {
                     id: "1-3",
                     title: "Aula 3: O Passo a Passo Físico (Ligar, Desligar, Conexões e Energia)",
                     duration: "Leitura (20 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/z4MeP18LUnI",
                     content: `<h2>📘 Apostila – Aula 3</h2>
 <h3>Tema: Ligar, Desligar e Conectar – Primeiros Passos com o Computador</h3>
 <p>Chegou o momento de colocar a mão na massa! Antes de começarmos a mexer nos programas, precisamos entender como o computador se comunica com a energia elétrica e com os seus periféricos. Ligar e desligar a máquina do jeito certo é o primeiro passo para evitar falhas e não perder seus arquivos.</p>

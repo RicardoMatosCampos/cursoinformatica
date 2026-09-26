@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const videoWrapper = document.querySelector('.video-wrapper');
         if (lesson.videoUrl) {
             // Se houver URL do vídeo nos dados da aula, injeta o iframe
-            videoWrapper.innerHTML = `<iframe src="${lesson.videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            videoWrapper.innerHTML = `<iframe src="${lesson.videoUrl}" title="${lesson.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
         } else {
             // Se não houver, mostra o placeholder
             videoWrapper.innerHTML = `
