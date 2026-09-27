@@ -229,7 +229,7 @@ const basicCourseData = {
                     id: "1-4",
                     title: "Aula 4: O que é Sistema Operacional e a Evolução do Windows",
                     duration: "Leitura (25 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/pDsQwqYrtos",
                     content: `<h2>📘 Apostila – Aula 4</h2>
 <h3>Tema: Sistemas Operacionais e a Evolução do Windows</h3>
 <p>Nas aulas passadas, entendemos como o computador funciona fisicamente (o Hardware). Mas, se você ligar as peças sem nenhum programa dentro, a máquina não fará nada. Para que o computador ganhe "vida", precisamos de um software principal. É aqui que entra o Sistema Operacional.</p>
@@ -298,7 +298,7 @@ const basicCourseData = {
                     id: "1-5",
                     title: "Aula 5: O Ambiente Digital (Área de Trabalho, Menus e Janelas)",
                     duration: "Leitura (20 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/J3ICWsc_hcU",
                     content: `<h2>📘 Apostila – Aula 5</h2>
 <h3>Tema: Área de Trabalho, Menus e Janelas Principais do Windows</h3>
 <p>Chegou a hora de olharmos para a tela e assumirmos o controle! Nas aulas passadas, entendemos como o computador funciona por dentro. Agora, vamos explorar a interface visual do Windows, que foi desenhada para ser o seu ambiente de trabalho digital.</p>
@@ -373,7 +373,7 @@ const basicCourseData = {
                     id: "fix-1",
                     title: "Atividade de Fixação: Módulo 1",
                     duration: "Prática (5 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "",
                     quiz: [
                         {
                             isFixacao: true,
@@ -381,9 +381,67 @@ const basicCourseData = {
                             options: ["Memória RAM", "Disco Rígido (HD)", "Processador (CPU)", "Placa Mãe"],
                             correctAnswer: 2,
                             explanation: "O Processador (CPU) executa todos os cálculos e instruções do sistema."
+                        },
+                        {
+                            isFixacao: true,
+                            question: "Qual é o significado essencial da palavra 'Informática'?",
+                            options: ["Internet + Máquinas", "Informação + Automática", "Interação + Eletrônica", "Informação + Matemática"],
+                            correctAnswer: 1,
+                            explanation: "A palavra Informática é a junção de Informação + Automática."
+                        },
+                        {
+                            isFixacao: true,
+                            question: "Qual é a forma correta e segura de desligar o computador?",
+                            options: ["Puxar o cabo da tomada", "Segurar o botão Power do gabinete por vários segundos", "Desligar direto no botão do filtro de linha", "Usar o botão de energia no Menu Iniciar"],
+                            correctAnswer: 3,
+                            explanation: "Para não corromper arquivos, o computador deve ser desligado via Menu Iniciar."
+                        },
+                        {
+                            isFixacao: true,
+                            question: "Qual a principal função de um Sistema Operacional (como o Windows)?",
+                            options: ["Proteger o computador contra vírus da internet", "Fazer a ponte (traduzir) entre o Hardware da máquina e você (usuário)", "Apenas acessar a internet e rodar vídeos", "Evitar que as peças físicas esquentem muito"],
+                            correctAnswer: 1,
+                            explanation: "O Sistema Operacional é o grande gerente que traduz as suas ordens para a máquina."
+                        },
+                        {
+                            isFixacao: true,
+                            question: "O que acontece quando você clica no botão de Minimizar (o traço) de uma janela?",
+                            options: ["A janela fecha e você perde tudo", "A janela aumenta para ocupar a tela toda", "O programa desinstala do computador", "A janela é escondida na Barra de Tarefas, sem fechar o programa"],
+                            correctAnswer: 3,
+                            explanation: "Minimizar serve para guardar a janela na Barra de Tarefas para você continuar depois."
                         }
                     ],
-                    content: `<h2>🎯 Atividade de Fixação - Módulo 1</h2><p>Responda as questões acima para testar seus conhecimentos. (Não vale XP)</p>`
+                    content: `<h2>🎯 Atividade de Fixação - Módulo 1</h2>
+<p>Responda as questões abaixo para testar seus conhecimentos. (Não vale XP)</p>
+<hr style="border-color: var(--border-color); margin: 32px 0;">
+<h3>Revisão em Vídeo</h3>
+<p>Clique nas miniaturas abaixo para rever o conteúdo de qualquer aula do Módulo 1 e tirar suas dúvidas antes de responder:</p>
+<style>
+.video-grid { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--accent-color) var(--bg-hover); }
+.video-grid::-webkit-scrollbar { height: 8px; }
+.video-grid::-webkit-scrollbar-track { background: var(--bg-hover); border-radius: 4px; }
+.video-grid::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 4px; }
+.video-thumb { cursor: pointer; width: 160px; height: 90px; border-radius: 8px; border: 2px solid transparent; object-fit: cover; transition: 0.2s; flex-shrink: 0; }
+.video-thumb:hover { border-color: var(--accent-color); transform: scale(1.05); }
+.video-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; }
+.video-modal.active { display: flex; }
+.video-modal-content { width: 90%; max-width: 900px; aspect-ratio: 16/9; position: relative; }
+.video-modal-close { position: absolute; top: -40px; right: 0; color: white; font-size: 35px; cursor: pointer; }
+.video-modal iframe { width: 100%; height: 100%; border: none; border-radius: 8px; }
+</style>
+<div class="video-grid">
+    <img src="https://img.youtube.com/vi/PMjH2tb2oqs/mqdefault.jpg" class="video-thumb" title="Aula 1" onclick="window.openVideoModal('https://www.youtube.com/embed/PMjH2tb2oqs?autoplay=1')">
+    <img src="https://img.youtube.com/vi/XVJTGhz4o-Y/mqdefault.jpg" class="video-thumb" title="Aula 2" onclick="window.openVideoModal('https://www.youtube.com/embed/XVJTGhz4o-Y?autoplay=1')">
+    <img src="https://img.youtube.com/vi/z4MeP18LUnI/mqdefault.jpg" class="video-thumb" title="Aula 3" onclick="window.openVideoModal('https://www.youtube.com/embed/z4MeP18LUnI?autoplay=1')">
+    <img src="https://img.youtube.com/vi/pDsQwqYrtos/mqdefault.jpg" class="video-thumb" title="Aula 4" onclick="window.openVideoModal('https://www.youtube.com/embed/pDsQwqYrtos?autoplay=1')">
+    <img src="https://img.youtube.com/vi/J3ICWsc_hcU/mqdefault.jpg" class="video-thumb" title="Aula 5" onclick="window.openVideoModal('https://www.youtube.com/embed/J3ICWsc_hcU?autoplay=1')">
+</div>
+<div class="video-modal" id="videoModal">
+    <div class="video-modal-content">
+        <span class="video-modal-close" onclick="window.closeVideoModal()">&times;</span>
+        <iframe id="videoModalFrame" src="" allowfullscreen></iframe>
+    </div>
+</div>`
                 }
             ]
         },
@@ -397,7 +455,7 @@ const basicCourseData = {
                     id: "2-1",
                     title: "Aula 01: Organização de arquivos e pastas",
                     duration: "Leitura (20 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/RchK_zW1ZNc",
                     content: `<h2>📘 Apostila – Módulo 2 | Aula 1</h2>
 <h3>Tema: Organização de Arquivos, Pastas e Subpastas</h3>
 <p>Neste módulo, vamos colocar a mão na massa e usar o Windows para organizar a nossa vida digital. Imagine que o seu computador é um grande escritório vazio. Se você jogar todos os seus papéis no chão, nunca vai achar o que precisa. O Windows oferece ferramentas perfeitas para organizar tudo isso: as <strong>Pastas</strong> e os <strong>Arquivos</strong>.</p>
@@ -483,7 +541,7 @@ const basicCourseData = {
                     id: "2-2",
                     title: "Aula 02: Criação e gerenciamento de subpastas",
                     duration: "Leitura (20 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/kTg9zJrnnOw",
                     content: `<h2>📘 Apostila – Módulo 2 | Aula 2</h2>
 <h3>Tema: Criação e Gerenciamento Avançado de Subpastas</h3>
 <p>Na aula anterior, aprendemos que uma pasta serve para guardar arquivos. Mas o que acontece quando uma pasta fica cheia demais? A solução é criar "pastas dentro de pastas". A essas pastas internas damos o nome de <strong>Subpastas</strong>. Hoje, vamos dominar a arte de organizar informações como um verdadeiro profissional de escritório.</p>

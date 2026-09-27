@@ -74,18 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         lessonTitle.textContent = lesson.title;
         
         // Handle Video Injection
+        const videoContainer = document.getElementById('video-container');
         const videoWrapper = document.querySelector('.video-wrapper');
         if (lesson.videoUrl) {
-            // Se houver URL do vídeo nos dados da aula, injeta o iframe
+            videoContainer.style.display = 'block';
             videoWrapper.innerHTML = `<iframe src="${lesson.videoUrl}" title="${lesson.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
         } else {
-            // Se não houver, mostra o placeholder
-            videoWrapper.innerHTML = `
-                <div class="video-placeholder">
-                    Espaço para o Vídeo<br>
-                    <span>Insira a propriedade "videoUrl" nesta aula no arquivo curso-basico.js</span>
-                </div>
-            `;
+            videoContainer.style.display = 'none';
+            videoWrapper.innerHTML = '';
         }
 
         let contentHtml = lesson.content || '';
@@ -171,3 +167,22 @@ document.addEventListener('DOMContentLoaded', () => {
         loadLesson(firstMod, firstLesson);
     }
 });
+
+// Funções globais para o modal de vídeo
+window.openVideoModal = function(url) {
+    const frame = document.getElementById('videoModalFrame');
+    const modal = document.getElementById('videoModal');
+    if (frame && modal) {
+        frame.src = url;
+        modal.classList.add('active');
+    }
+};
+
+window.closeVideoModal = function() {
+    const frame = document.getElementById('videoModalFrame');
+    const modal = document.getElementById('videoModal');
+    if (frame && modal) {
+        frame.src = '';
+        modal.classList.remove('active');
+    }
+};
