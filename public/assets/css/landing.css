@@ -258,6 +258,116 @@ p.subtitle {
     line-height: 1.5;
 }
 
+/* Syllabus / Grade Curricular */
+.syllabus {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.syllabus-item {
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 24px;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease;
+}
+
+.syllabus-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.module-number {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.syllabus-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.syllabus-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Instructor Section */
+.instructor {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.instructor-container {
+    background: linear-gradient(145deg, var(--surface-color), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.instructor-image {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+    border: 4px solid var(--bg-color);
+    box-shadow: 0 0 0 2px var(--primary);
+    overflow: hidden; /* Garante que a foto não vaze o círculo */
+}
+
+.instructor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.instructor-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.instructor-content p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    .instructor-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+}
+
 .landing-footer {
     text-align: center;
     padding: 20px;
