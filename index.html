@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informática Pro - Plataforma de Cursos</title>
+    <title>Tags Informática - Cursos Online</title>
     <meta name="description"
-        content="Acesse a plataforma de cursos Informática Pro. Evolua suas habilidades com nossos cursos completos.">
+        content="Acesse a plataforma de cursos da Tags Informática. Evolua suas habilidades com nossos cursos completos.">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -21,32 +21,43 @@
         <div class="shape shape-2"></div>
     </div>
 
+    <!-- Banner de Avisos Dinâmico -->
+    <div id="aviso-banner" class="aviso-banner" style="display: none;">
+        <i class="fa-solid fa-bullhorn"></i>
+        <span id="aviso-texto"></span>
+        <a href="#" id="aviso-link" target="_blank" class="btn-aviso">Saiba mais</a>
+    </div>
+
     <header>
         <nav>
-            <a href="#" class="logo" aria-label="Página Inicial da Informática Pro">
+            <a href="#" class="logo" aria-label="Página Inicial da Tags Informática">
                 <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
-                Informática Pro
+                Tags Informática
             </a>
         </nav>
     </header>
 
     <main class="hero">
         <div class="hero-content">
-            <div class="badge">Novo Portal de Acesso 🚀</div>
-            <h1>Transforme seu futuro com <span>Informática Pro</span></h1>
-            <p class="subtitle">Acesse nossa área de membros exclusiva e comece sua jornada de aprendizado hoje.
-                Acompanhe seu progresso, ganhe XP e emita seus certificados.</p>
+            <div class="badge">Sua nova plataforma de estudos 🚀</div>
+            <h1>Transforme seu futuro com a <span>Tags Informática</span></h1>
+            <p class="subtitle">Acesse nossos cursos e comece sua jornada de aprendizado hoje. Aprenda no seu próprio ritmo, do básico ao avançado, e prepare-se para o mercado de trabalho com foco totalmente prático.</p>
 
             <div class="actions">
                 <a href="curso-basico.html" class="btn btn-primary" aria-label="Acessar o Curso Básico">
                     <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                     Acessar Curso Básico
                 </a>
-                <a href="#" class="btn btn-advanced" style="opacity: 0.7; cursor: not-allowed;" onclick="event.preventDefault();" aria-label="Curso Avançado em Breve">
-                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                <button onclick="openModal('modal-lead')" class="btn btn-advanced" aria-label="Curso Avançado em Breve">
+                    <i class="fa-solid fa-rocket" aria-hidden="true"></i>
                     Curso Avançado (Em breve)
-                </a>
-
+                </button>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button onclick="openModal('modal-certificado')" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <i class="fa-solid fa-award"></i> Solicitar meu Certificado
+                </button>
             </div>
         </div>
     </main>
@@ -59,10 +70,9 @@
                 focadas no mercado de trabalho.</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></div>
-            <h3 class="feature-title">Gamificação</h3>
-            <p class="feature-desc">Suba de nível, acumule pontos XP e desbloqueie conquistas enquanto avança nos seus
-                estudos diariamente.</p>
+            <div class="feature-icon"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i></div>
+            <h3 class="feature-title">Suporte ao Aluno</h3>
+            <p class="feature-desc">Não estude sozinho. Nossa equipe está pronta para tirar suas dúvidas e ajudar você a superar os desafios do aprendizado.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></div>
@@ -74,11 +84,22 @@
 
     <section class="testimonials" id="depoimentos">
         <div class="section-header">
-            <h2>Deixe seu Depoimento</h2>
-            <p>Conte para nós como a plataforma tem ajudado você.</p>
+            <h2>Depoimentos de Alunos</h2>
+            <p>Veja o que dizem sobre nossa plataforma e deixe também a sua experiência.</p>
         </div>
+        
+        <!-- Lista de depoimentos renderizados via JS -->
+        <div id="testimonials-list" class="testimonials-grid" style="margin-bottom: 50px;">
+            <!-- Será preenchido via script -->
+        </div>
+
+        <div class="section-header" style="margin-top: 20px;">
+            <h3 style="font-size: 1.5rem; color: var(--text-main);">Deixe seu Depoimento</h3>
+        </div>
+
         <div class="form-container">
-            <form name="depoimentos" data-netlify="true" method="POST" class="custom-form">
+            <form name="depoimentos" method="POST" class="custom-form">
+                <input type="hidden" name="tipo" value="depoimento">
                 <input type="hidden" name="Assunto" value="NOVO DEPOIMENTO - Site">
                 <div class="form-row">
                     <div class="form-group">
@@ -108,8 +129,19 @@
             <h2>Perguntas Frequentes</h2>
             <p>Ainda tem dúvidas? Envie sua pergunta para nossa equipe.</p>
         </div>
+        
+        <!-- Lista de FAQs renderizadas via JS -->
+        <div id="faq-list" class="faq-list" style="margin-bottom: 50px;">
+            <!-- Será preenchido via script -->
+        </div>
+
+        <div class="section-header" style="margin-top: 20px;">
+            <h3 style="font-size: 1.5rem; color: var(--text-main);">Envie sua Dúvida</h3>
+        </div>
+
         <div class="form-container">
-            <form name="duvidas-faq" data-netlify="true" method="POST" class="custom-form">
+            <form name="duvidas-faq" method="POST" class="custom-form">
+                <input type="hidden" name="tipo" value="faq">
                 <input type="hidden" name="Assunto" value="NOVA DUVIDA FAQ - Site">
                 <div class="form-row">
                     <div class="form-group">
@@ -135,14 +167,166 @@
     </section>
 
     <footer class="landing-footer">
-        <p>&copy; 2026 Informática Pro. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Tags Informática. Todos os direitos reservados.</p>
         <div style="margin-top: 10px;">
             <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
         </div>
     </footer>
 
+    <!-- Modal Lead -->
+    <div id="modal-lead" class="modal-overlay">
+        <div class="modal-content form-container">
+            <button class="close-modal" onclick="closeModal('modal-lead')"><i class="fa-solid fa-xmark"></i></button>
+            <h3 style="margin-bottom: 10px;">Lista de Espera: Curso Avançado</h3>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Deixe seu e-mail e seja o primeiro a saber quando as vagas abrirem!</p>
+            <form name="lead" method="POST" class="custom-form">
+                <input type="hidden" name="tipo" value="lead">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="nome" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" required placeholder="Seu e-mail principal">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar na Lista</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Certificado -->
+    <div id="modal-certificado" class="modal-overlay">
+        <div class="modal-content form-container">
+            <button class="close-modal" onclick="closeModal('modal-certificado')"><i class="fa-solid fa-xmark"></i></button>
+            <h3 style="margin-bottom: 10px;">Emissão de Certificado</h3>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Concluiu o curso básico? Solicite aqui seu certificado oficial. (Liberado após confirmação de pagamento)</p>
+            <form name="certificado" method="POST" class="custom-form">
+                <input type="hidden" name="tipo" value="certificado">
+                <div class="form-group">
+                    <label>Nome Completo (Para o certificado)</label>
+                    <input type="text" name="nome" required placeholder="João da Silva">
+                </div>
+                <div class="form-group">
+                    <label>E-mail de Cadastro</label>
+                    <input type="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" name="cpf" required placeholder="000.000.000-00">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Solicitar Certificado</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Mensagem enviada com sucesso!</span>
+    </div>
+
     <script>
-        // Envio dos formulários sem sair da página (AJAX)
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQYoyk3kx6mtV6f-MftjSU4Sp0lmQB1Md00lyNA5KXXoyu3IjuXhvSz-ivAQGCdM9j/exec";
+
+        // Funções de Modal
+        const openModal = (id) => {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        const closeModal = (id) => {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        // Função para carregar dados dinâmicos da Planilha
+        const loadDynamicData = async () => {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.json();
+                
+                // Carrega Avisos
+                if (data.avisos && data.avisos.length > 0) {
+                    const aviso = data.avisos[0]; // Pega o primeiro aviso ativo
+                    const avisoBanner = document.getElementById('aviso-banner');
+                    document.getElementById('aviso-texto').innerText = aviso.texto;
+                    if(aviso.link) {
+                        document.getElementById('aviso-link').href = aviso.link;
+                        document.getElementById('aviso-link').style.display = 'inline-block';
+                    } else {
+                        document.getElementById('aviso-link').style.display = 'none';
+                    }
+                    avisoBanner.style.display = 'flex';
+                }
+
+                // Cupons preparados (pode usar data.cupons depois)
+                
+                // Carrega Depoimentos
+                const depContainer = document.getElementById('testimonials-list');
+                if (data.depoimentos && data.depoimentos.length > 0) {
+                    depContainer.innerHTML = ''; 
+                    data.depoimentos.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'testimonial-card';
+                        card.innerHTML = `
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"${item.depoimento}"</p>
+                            <div class="student-info">
+                                <div class="student-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div>
+                                    <strong>${item.nome}</strong>
+                                    <span>Aluno Tags Informática</span>
+                                </div>
+                            </div>
+                        `;
+                        depContainer.appendChild(card);
+                    });
+                }
+
+                // Carrega FAQ
+                const faqContainer = document.getElementById('faq-list');
+                if (data.faq && data.faq.length > 0) {
+                    faqContainer.innerHTML = '';
+                    data.faq.forEach(item => {
+                        const faqItem = document.createElement('div');
+                        faqItem.className = 'faq-item';
+                        faqItem.innerHTML = `
+                            <h3 class="faq-question"><i class="fa-solid fa-circle-question"></i> ${item.pergunta}</h3>
+                            <p class="faq-answer">${item.resposta}</p>
+                        `;
+                        faqContainer.appendChild(faqItem);
+                    });
+                }
+            } catch (error) {
+                console.error("Erro ao carregar dados:", error);
+            }
+        };
+
+        // Função para mostrar notificação visual (Toast)
+        const showToast = (message, isError = false) => {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const icon = toast.querySelector('i');
+            
+            toastMsg.innerText = message;
+            if (isError) {
+                toast.style.borderLeftColor = '#ef4444';
+                icon.className = 'fa-solid fa-circle-xmark';
+                icon.style.color = '#ef4444';
+            } else {
+                toast.style.borderLeftColor = '#10b981';
+                icon.className = 'fa-solid fa-circle-check';
+                icon.style.color = '#10b981';
+            }
+            
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        };
+
+        // Envio dos formulários
         const handleSubmit = (e) => {
             e.preventDefault();
             const form = e.target;
@@ -153,17 +337,29 @@
             submitBtn.innerText = "Enviando...";
             submitBtn.disabled = true;
 
-            fetch("/", {
+            // Envia SEMPRE para o Google Sheets porque todos tem campo 'tipo'
+            fetch(SCRIPT_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(formData).toString()
             })
             .then(() => {
-                alert("Sua mensagem foi enviada com sucesso! Obrigado.");
+                const tipo = form.querySelector('input[name="tipo"]').value;
+                if (tipo === "depoimento") showToast("Depoimento enviado para análise!");
+                else if (tipo === "faq") showToast("Dúvida enviada! Em breve responderemos.");
+                else if (tipo === "lead") {
+                    showToast("Email salvo! Te avisaremos.");
+                    closeModal('modal-lead');
+                }
+                else if (tipo === "certificado") {
+                    showToast("Solicitação recebida. Analisaremos o pagamento.");
+                    closeModal('modal-certificado');
+                }
+                else showToast("Mensagem enviada com sucesso!");
                 form.reset();
             })
             .catch((error) => {
-                alert("Ops! Houve um erro ao tentar enviar sua mensagem.");
+                showToast("Ops! Houve um erro ao enviar.", true);
             })
             .finally(() => {
                 submitBtn.innerText = originalBtnText;
@@ -171,10 +367,11 @@
             });
         };
 
-        // Adiciona o evento nos formulários do Netlify
-        document.querySelectorAll('form[data-netlify="true"]').forEach(form => {
+        document.querySelectorAll('.custom-form').forEach(form => {
             form.addEventListener('submit', handleSubmit);
         });
+
+        document.addEventListener('DOMContentLoaded', loadDynamicData);
     </script>
 </body>
 
