@@ -8,6 +8,8 @@
     <meta name="description"
         content="Acesse a plataforma de cursos da Tags Informática. Evolua suas habilidades com nossos cursos completos.">
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -290,6 +292,18 @@
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyW2c_Z9IpOre1ut4nUft1kKFaqCoiKRNnsjt573LG-u2uj7VglPmz9SN1FPXfxfZUt/exec";
 
+        // Função para escapar HTML (Prevenção de XSS)
+        const escapeHTML = (str) => {
+            if (!str) return '';
+            return str.toString().replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag));
+        };
+
         // Funções de Modal
         const openModal = (id) => {
             document.getElementById(id).classList.add('active');
@@ -333,11 +347,11 @@
                             <div class="stars">
                                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                             </div>
-                            <p class="testimonial-text">"${item.depoimento}"</p>
+                            <p class="testimonial-text">"${escapeHTML(item.depoimento)}"</p>
                             <div class="student-info">
                                 <div class="student-avatar"><i class="fa-solid fa-user"></i></div>
                                 <div>
-                                    <strong>${item.nome}</strong>
+                                    <strong>${escapeHTML(item.nome)}</strong>
                                     <span>Aluno Tags Informática</span>
                                 </div>
                             </div>
@@ -354,8 +368,8 @@
                         const faqItem = document.createElement('div');
                         faqItem.className = 'faq-item';
                         faqItem.innerHTML = `
-                            <h3 class="faq-question"><i class="fa-solid fa-circle-question"></i> ${item.pergunta}</h3>
-                            <p class="faq-answer">${item.resposta}</p>
+                            <h3 class="faq-question"><i class="fa-solid fa-circle-question"></i> ${escapeHTML(item.pergunta)}</h3>
+                            <p class="faq-answer">${escapeHTML(item.resposta)}</p>
                         `;
                         faqContainer.appendChild(faqItem);
                     });
@@ -418,12 +432,13 @@
                         closeModal('modal-certificado');
                     }
                     else showToast("Mensagem enviada com sucesso!");
+                    
                     form.reset();
+                    submitBtn.innerText = "Enviado com sucesso";
+                    // Mantemos o botão desabilitado para evitar spam
                 })
                 .catch((error) => {
                     showToast("Ops! Houve um erro ao enviar.", true);
-                })
-                .finally(() => {
                     submitBtn.innerText = originalBtnText;
                     submitBtn.disabled = false;
                 });

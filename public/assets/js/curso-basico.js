@@ -613,7 +613,7 @@ const basicCourseData = {
                     id: "2-3",
                     title: "Aula 03: Personalização do desktop e atalhos",
                     duration: "Leitura (20 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/O6W_3Jv1ihI",
                     content: `<h2>📘 Apostila – Módulo 2 | Aula 3</h2>
 <h3>Tema: Personalização do Desktop e Atalhos</h3>
 <p>Imagine chegar no seu escritório e poder escolher a cor das paredes, o quadro que fica de frente para você e onde cada ferramenta de trabalho deve ficar. No Windows, você pode fazer exatamente isso! Hoje vamos aprender a deixar o computador com a sua "cara" e a criar atalhos para que você não perca tempo procurando seus programas favoritos.</p>
@@ -696,7 +696,7 @@ const basicCourseData = {
                     id: "2-4",
                     title: "Aula 04: Armazenamento Móvel (Uso Seguro de Pen Drives)",
                     duration: "Leitura (20 min)",
-                    videoUrl: "https://www.youtube.com/embed/o1FiPSv60aY",
+                    videoUrl: "https://www.youtube.com/embed/XOZEj7YUVTg",
                     content: `<h2>📘 Apostila – Módulo 2 | Aula 4</h2>
 <h3>Tema: Armazenamento Móvel (Uso Seguro de Pen Drives e HDs Externos)</h3>
 <p>Até agora, aprendemos a organizar os arquivos dentro do nosso próprio computador. Mas e quando precisamos levar um documento importante para a gráfica, entregar um currículo em outro local ou simplesmente fazer um backup (cópia de segurança) das nossas fotos? Para isso, usamos o <strong>Armazenamento Móvel</strong>.</p>
@@ -1301,8 +1301,8 @@ const basicCourseData = {
 <div class="video-grid">
     <img src="https://img.youtube.com/vi/RchK_zW1ZNc/mqdefault.jpg" class="video-thumb" title="Aula 1" onclick="window.openVideoModal('https://www.youtube.com/embed/RchK_zW1ZNc?autoplay=1')">
     <img src="https://img.youtube.com/vi/kTg9zJrnnOw/mqdefault.jpg" class="video-thumb" title="Aula 2" onclick="window.openVideoModal('https://www.youtube.com/embed/kTg9zJrnnOw?autoplay=1')">
-    <img src="https://img.youtube.com/vi/o1FiPSv60aY/mqdefault.jpg" class="video-thumb" title="Aula 3" onclick="window.openVideoModal('https://www.youtube.com/embed/o1FiPSv60aY?autoplay=1')">
-    <img src="https://img.youtube.com/vi/o1FiPSv60aY/mqdefault.jpg" class="video-thumb" title="Aula 4" onclick="window.openVideoModal('https://www.youtube.com/embed/o1FiPSv60aY?autoplay=1')">
+    <img src="https://img.youtube.com/vi/O6W_3Jv1ihI/mqdefault.jpg" class="video-thumb" title="Aula 3" onclick="window.openVideoModal('https://www.youtube.com/embed/O6W_3Jv1ihI?autoplay=1')">
+    <img src="https://img.youtube.com/vi/XOZEj7YUVTg/mqdefault.jpg" class="video-thumb" title="Aula 4" onclick="window.openVideoModal('https://www.youtube.com/embed/XOZEj7YUVTg?autoplay=1')">
     <img src="https://img.youtube.com/vi/o1FiPSv60aY/mqdefault.jpg" class="video-thumb" title="Aula 5" onclick="window.openVideoModal('https://www.youtube.com/embed/o1FiPSv60aY?autoplay=1')">
     <img src="https://img.youtube.com/vi/o1FiPSv60aY/mqdefault.jpg" class="video-thumb" title="Aula 6" onclick="window.openVideoModal('https://www.youtube.com/embed/o1FiPSv60aY?autoplay=1')">
     <img src="https://img.youtube.com/vi/o1FiPSv60aY/mqdefault.jpg" class="video-thumb" title="Aula 7" onclick="window.openVideoModal('https://www.youtube.com/embed/o1FiPSv60aY?autoplay=1')">
