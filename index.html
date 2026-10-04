@@ -435,7 +435,11 @@
                     
                     form.reset();
                     submitBtn.innerText = "Enviado com sucesso";
-                    // Mantemos o botão desabilitado para evitar spam
+                    
+                    // Atualiza os blocos de mensagens na tela sem recarregar a página inteira
+                    if (tipo === "depoimento" || tipo === "faq") {
+                        loadDynamicData();
+                    }
                 })
                 .catch((error) => {
                     showToast("Ops! Houve um erro ao enviar.", true);
