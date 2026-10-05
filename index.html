@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tags Informática - Cursos Online</title>
+    <title>TagsInfor - Cursos Online</title>
     <meta name="description"
-        content="Acesse a plataforma de cursos da Tags Informática. Evolua suas habilidades com nossos cursos completos.">
+        content="Acesse a plataforma de cursos da TagsInfor. Evolua suas habilidades com nossos cursos completos.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,9 +32,9 @@
 
     <header>
         <nav>
-            <a href="#" class="logo" aria-label="Página Inicial da Tags Informática">
+            <a href="#" class="logo" aria-label="Página Inicial da TagsInfor">
                 <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
-                Tags Informática
+                TagsInfor
             </a>
         </nav>
     </header>
@@ -42,12 +42,12 @@
     <main class="hero">
         <div class="hero-content">
             <div class="badge">Sua nova plataforma de estudos 🚀</div>
-            <h1>Transforme seu futuro com a <span>Tags Informática</span></h1>
+            <h1>Transforme seu futuro com a <span>TagsInfor</span></h1>
             <p class="subtitle">Acesse nossos cursos e comece sua jornada de aprendizado hoje. Aprenda no seu próprio
                 ritmo, do básico ao avançado, e prepare-se para o mercado de trabalho com foco totalmente prático.</p>
 
             <div class="actions">
-                <a href="curso-basico.html" class="btn btn-primary" aria-label="Acessar o Curso Básico">
+                <a href="javascript:void(0)" onclick="acessarCurso()" class="btn btn-primary" aria-label="Acessar o Curso Básico">
                     <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                     Acessar Curso Básico
                 </a>
@@ -57,7 +57,7 @@
                 </button>
             </div>
 
-            <div style="margin-top: 20px;">
+            <div style="margin-top: 20px; display: none;">
                 <button onclick="openModal('modal-certificado')" class="btn btn-outline"
                     style="padding: 10px 20px; font-size: 0.9rem;">
                     <i class="fa-solid fa-award"></i> Solicitar meu Certificado
@@ -224,11 +224,37 @@
     </section>
 
     <footer class="landing-footer">
-        <p>&copy; 2026 Tags Informática. Todos os direitos reservados.</p>
+        <p>&copy; 2026 TagsInfor. Todos os direitos reservados.</p>
         <div style="margin-top: 10px;">
             <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
         </div>
     </footer>
+
+    <!-- Modal Cadastro Gratuito -->
+    <div id="modal-cadastro" class="modal-overlay">
+        <div class="modal-content form-container">
+            <button class="close-modal" onclick="closeModal('modal-cadastro')"><i class="fa-solid fa-xmark"></i></button>
+            <h3 style="margin-bottom: 10px;">Cadastro Gratuito</h3>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Preencha para acessar o conteúdo completo do curso básico gratuitamente.</p>
+            <form name="cadastro" method="POST" class="custom-form">
+                <input type="hidden" name="tipo" value="cadastro">
+                <input type="hidden" name="Assunto" value="NOVO ALUNO GRATUITO - Site">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" name="nome" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" required placeholder="Seu e-mail principal">
+                </div>
+                <div class="form-group">
+                    <label>Telefone (WhatsApp)</label>
+                    <input type="tel" name="telefone" required placeholder="(00) 00000-0000">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Acessar as Aulas Agora</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Modal Lead -->
     <div id="modal-lead" class="modal-overlay">
@@ -290,7 +316,7 @@
     </div>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyW2c_Z9IpOre1ut4nUft1kKFaqCoiKRNnsjt573LG-u2uj7VglPmz9SN1FPXfxfZUt/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwICJpxYs6JVOO5Htck3L4zEylMj01CyDnzOQxvBZP6UJXSi4CHU74sG9TjauAfqdzt/exec";
 
         // Função para escapar HTML (Prevenção de XSS)
         const escapeHTML = (str) => {
@@ -312,6 +338,15 @@
         const closeModal = (id) => {
             document.getElementById(id).classList.remove('active');
             document.body.style.overflow = 'auto';
+        };
+
+        const acessarCurso = () => {
+            // Verifica se o aluno já fez o cadastro gratuito nesse navegador
+            if (localStorage.getItem('aluno_cadastrado') === 'true') {
+                window.location.href = 'curso-basico.html';
+            } else {
+                openModal('modal-cadastro');
+            }
         };
 
         // Função para carregar dados dinâmicos da Planilha
@@ -352,7 +387,7 @@
                                 <div class="student-avatar"><i class="fa-solid fa-user"></i></div>
                                 <div>
                                     <strong>${escapeHTML(item.nome)}</strong>
-                                    <span>Aluno Tags Informática</span>
+                                    <span>Aluno TagsInfor</span>
                                 </div>
                             </div>
                         `;
@@ -431,14 +466,24 @@
                         showToast("Solicitação recebida. Analisaremos o pagamento.");
                         closeModal('modal-certificado');
                     }
+                    else if (tipo === "cadastro") {
+                        showToast("Cadastro realizado! Redirecionando...");
+                        localStorage.setItem('aluno_cadastrado', 'true');
+                        closeModal('modal-cadastro');
+                        setTimeout(() => {
+                            window.location.href = 'curso-basico.html';
+                        }, 1500);
+                    }
                     else showToast("Mensagem enviada com sucesso!");
                     
                     form.reset();
                     submitBtn.innerText = "Enviado com sucesso";
                     
-                    // Atualiza os blocos de mensagens na tela sem recarregar a página inteira
+                    // Atualiza os blocos de mensagens na tela (com atraso de 3s para o Google salvar)
                     if (tipo === "depoimento" || tipo === "faq") {
-                        loadDynamicData();
+                        setTimeout(() => {
+                            loadDynamicData();
+                        }, 3000);
                     }
                 })
                 .catch((error) => {

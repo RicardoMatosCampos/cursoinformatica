@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwICJpxYs6JVOO5Htck3L4zEylMj01CyDnzOQxvBZP6UJXSi4CHU74sG9TjauAfqdzt/exec";
+
     let activeModuleId = null;
     let activeLessonId = null;
 
@@ -142,6 +144,50 @@ document.addEventListener('DOMContentLoaded', () => {
                         feedbackDiv.style.border = '1px solid #ef4444';
                         feedbackDiv.innerHTML = `<h4><i class="fa-solid fa-circle-xmark"></i> Incorreto.</h4><p>Tente novamente!</p>`;
                     }
+                });
+            });
+        }
+        
+        // Verifica se há um formulário de solicitação de certificado na aula e anexa o evento
+        const lessonForm = lessonTextContent.querySelector('form.custom-form');
+        if (lessonForm) {
+            lessonForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                
+                submitBtn.innerText = "Enviando...";
+                submitBtn.disabled = true;
+                
+                fetch(SCRIPT_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    const carga = formData.get('carga_horaria') || 'Não informada';
+                    const pagador = formData.get('nome_pagador') || 'O próprio';
+                    const wppText = `Olá, vim da plataforma! Acabei de solicitar o meu certificado.\n\n👤 *Aluno:* ${formData.get('nome')}\n💳 *Pagador:* ${pagador}\n🎓 *Opção:* ${carga}\n\nSegue abaixo o meu comprovante de pagamento:`;
+                    const wppUrl = `https://wa.me/5592994901349?text=${encodeURIComponent(wppText)}`;
+                    
+                    form.reset();
+                    submitBtn.innerText = "Enviado com sucesso";
+                    alert("Dados salvos com sucesso! Vamos abrir o WhatsApp agora para você enviar o comprovante. (Se não abrir, clique no botão verde que vai aparecer)");
+                    
+                    // Tenta abrir em nova aba
+                    let wppWindow = window.open(wppUrl, '_blank');
+                    
+                    // Se o navegador bloquear o pop-up (comum em celulares após o fetch), cria o botão na tela
+                    if (!wppWindow || wppWindow.closed || typeof wppWindow.closed === 'undefined') {
+                        submitBtn.outerHTML = `<a href="${wppUrl}" target="_blank" class="btn w-100" style="background:#25D366; color:white; padding:12px; border-radius:4px; text-align:center; display:block; font-weight:bold; text-decoration:none;"><i class="fa-brands fa-whatsapp"></i> Concluir: Enviar Comprovante no WhatsApp</a>`;
+                    }
+                })
+                .catch((error) => {
+                    alert("Houve um erro ao enviar. Tente novamente.");
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
                 });
             });
         }

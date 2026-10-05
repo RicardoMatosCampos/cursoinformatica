@@ -3110,6 +3110,95 @@ Use o botão <strong>AutoSoma (Σ)</strong> ou digite <code>=SOMA(A1:A30)</code>
 </div>`
                 }
             ]
+        },
+        {
+            title: "Módulo 6: Emissão do Certificado",
+            lessons: [
+                {
+                    id: "6-1",
+                    title: "Solicite o seu Certificado Oficial",
+                    duration: "Leitura (5 min)",
+                    videoUrl: "",
+                    content: `
+<h2>🎓 Emissão do Certificado de Conclusão</h2>
+<p>Parabéns por chegar ao final do Curso Básico de Informática da <strong>TagsInfor</strong>!</p>
+<p>Como explicamos, o acesso a todas as aulas é <strong>100% gratuito</strong>. No entanto, se você deseja comprovar seus conhecimentos para o mercado de trabalho, faculdade ou horas complementares, você pode solicitar a emissão do nosso certificado oficial.</p>
+
+<hr style="border-color: var(--border-color); margin: 32px 0;">
+
+<h3>Como funciona e Valores:</h3>
+<p>Oferecemos três opções de certificados. Você escolhe qual carga horária é melhor para a sua necessidade atual:</p>
+<ul style="margin-bottom: 24px;">
+    <li><i class="fa-solid fa-clock text-accent"></i> <strong>Opção 1:</strong> Certificado Promocional de 20 Horas &mdash; <strong>R$ 10,00</strong></li>
+    <li><i class="fa-solid fa-clock text-accent"></i> <strong>Opção 2:</strong> Certificado Básico de 40 Horas &mdash; <strong>R$ 29,90</strong></li>
+    <li><i class="fa-solid fa-clock text-accent"></i> <strong>Opção 3:</strong> Certificado Completo de 75 Horas &mdash; <strong>R$ 49,90</strong></li>
+</ul>
+
+<div style="background-color: var(--bg-hover); padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 24px 0;">
+    <h4 style="margin-top: 0; color: #10b981;"><i class="fa-solid fa-credit-card"></i> Como realizar o pagamento (Cartão ou PIX)</h4>
+    <p>Para emitir o seu certificado, basta clicar em um dos botões seguros abaixo, correspondente à carga horária que você deseja:</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0; align-items: center;">
+        <a href="https://payment-link-v3.ton.com.br/pl_wnzdO3QgN5kX5kudOfwDYo6emEq7VLM0" target="_blank" style="display: inline-block; width: 100%; max-width: 400px; padding: 15px 20px; background: #10b981; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; text-align: center; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-cart-shopping"></i> Pagar R$ 10,00 (Certificado 20h)</a>
+        
+        <a href="https://payment-link-v3.ton.com.br/pl_72xgkMpWaERyw7Hv7U8ny0j6n8vbl34D" target="_blank" style="display: inline-block; width: 100%; max-width: 400px; padding: 15px 20px; background: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; text-align: center; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);"><i class="fa-solid fa-cart-shopping"></i> Pagar R$ 29,90 (Certificado 40h)</a>
+        
+        <a href="https://payment-link-v3.ton.com.br/pl_4B7RK0k26Eevwl0SghRwpOrjVlPnJDXG" target="_blank" style="display: inline-block; width: 100%; max-width: 400px; padding: 15px 20px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1rem; text-align: center; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(139, 92, 246, 0.2);"><i class="fa-solid fa-cart-shopping"></i> Pagar R$ 49,90 (Certificado 75h)</a>
+    </div>
+
+    <p style="font-size: 0.95em; color: var(--text-muted); text-align: center;"><strong>Prefere transferência direta via chave PIX?</strong><br>
+    Chave PIX (Celular): <strong>(92) 99999-9999</strong> | Nome: TagsInfor</p>
+    
+    <p style="margin-bottom: 0; font-size: 0.9em; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);"><em>Após finalizar o pagamento em qualquer um dos links, <strong>preencha o formulário abaixo</strong> informando a carga horária escolhida para que nossa equipe libere o seu certificado!</em></p>
+</div>
+
+<h3>Formulário de Solicitação</h3>
+<form name="certificado" method="POST" class="custom-form" style="max-width: 600px; background: var(--bg-main); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 20px;">
+    <!-- Campos Ocultos para o Google Script -->
+    <input type="hidden" name="tipo" value="certificado">
+    <input type="hidden" name="Assunto" value="NOVA SOLICITAÇÃO CERTIFICADO - Final do Curso">
+    
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Nome Completo (Para sair no certificado):</label>
+        <input type="text" name="nome" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-main);">
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 500;">E-mail para envio:</label>
+        <input type="email" name="email" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-main);">
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Telefone / WhatsApp com DDD:</label>
+        <input type="tel" name="telefone" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-main);">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 500;">CPF (Obrigatório para o verso do certificado):</label>
+        <input type="text" name="cpf" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-main);">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Nome de quem pagou (Titular do Cartão / Conta PIX):</label>
+        <p style="font-size: 0.85em; color: var(--text-muted); margin-top: 0; margin-bottom: 5px;">*Se você usou a conta ou cartão de terceiros (mãe, amigo, etc), digite o nome dessa pessoa para podermos localizar o seu pagamento.*</p>
+        <input type="text" name="nome_pagador" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-main);">
+    </div>
+
+    <div style="margin-bottom: 25px;">
+        <label style="display: block; margin-bottom: 5px; font-weight: 500;">Qual opção de certificado você pagou?</label>
+        <select name="carga_horaria" required style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-main);">
+            <option value="">Selecione uma opção...</option>
+            <option value="20 Horas - R$ 10,00">Certificado Promocional 20 Horas (R$ 10,00)</option>
+            <option value="40 Horas - R$ 29,90">Certificado Básico 40 Horas (R$ 29,90)</option>
+            <option value="75 Horas - R$ 49,90">Certificado Completo 75 Horas (R$ 49,90)</option>
+        </select>
+    </div>
+
+    <button type="submit" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem;">Confirmar Solicitação de Certificado</button>
+</form>
+                    `
+                }
+            ]
         }
     ]
 };
