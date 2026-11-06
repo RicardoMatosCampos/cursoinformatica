@@ -1,43 +1,124 @@
-# 💻 Plataforma de Cursos de Informática (Informática Pro)
+# 💻 Sistema de Gestão de Equipamentos e Ordens de Serviço TI
 
-![Status](https://img.shields.io/badge/Status-Online-success?style=for-the-badge)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+Sistema corporativo de alta confiabilidade para controle de ordens de serviço, manutenção técnica e movimentação de inventário de TI em unidades de saúde municipais (Unidades de Saúde da Família - USF de **Porte IV** e **Porte I**).
 
-Plataforma web estática desenvolvida para estruturação e exibição modular de conteúdos educacionais de tecnologia. O projeto encontra-se na fase de MVP, focado atualmente no **módulo básico**, com arquitetura já preparada para expansão e recebimento de módulos avançados. Utiliza integração contínua (CI/CD) para atualizações automáticas em produção.
-
-🌐 **Acesse o projeto online:** [seu-dominio.com.br](https://seu-dominio.com.br)
+Desenvolvido em **Python** utilizando **Streamlit** e integrado à nuvem do **Supabase** (PostgreSQL + PostgREST + Supabase Auth).
 
 ---
 
-## 🚀 Tecnologias e Infraestrutura Utilizadas
+## 🏛️ Arquitetura e Estrutura de Código
 
-Este projeto vai além do código frontend, englobando também a configuração de infraestrutura web, versionamento e soluções serverless:
-
-- **Frontend:** HTML5, CSS e JavaScript (ES6+).
-- **Integração de Mídia:** YouTube Embed (Iframe) direto nas páginas, com CSS responsivo (proporção 16:9), garantindo carregamento rápido e sem dependência de APIs externas complexas.
-- **Captação de Dados (Serverless):** Netlify Forms com submissão assíncrona via JavaScript (AJAX/Fetch API), eliminando a necessidade de um servidor backend dedicado ou banco de dados.
-- **Hospedagem & CI/CD:** Netlify (Deploy Contínuo via Git).
-- **Infraestrutura Web:** Gerenciamento de zonas DNS no Registro.br e certificado SSL (HTTPS).
-- **Versionamento:** Git e GitHub.
-
----
-
-## 📌 Funcionalidades
-
-- **Módulos Segmentados:** Divisão fluida do conteúdo de aprendizagem.
-- **Formulários Dinâmicos em Site Estático:** Sistema de captação de depoimentos e suporte (FAQ) integrado nativamente ao painel do Netlify. O envio dos dados é tratado via AJAX, garantindo feedback imediato ao usuário (alertas de sucesso/erro) sem recarregar a página (Single Page Application feel).
-- **Deploy Automatizado:** Qualquer alteração enviada para a branch `main` reflete automaticamente no ambiente de produção.
-- **Alta Disponibilidade:** Arquitetura estática garantindo carregamento rápido e sem instabilidades operacionais.
-
----
-
-## 📂 Estrutura de Diretórios
+O projeto segue os princípios de **Clean Code**, **Separação de Responsabilidades (SoC)** e diretrizes da **PEP 8**, garantindo legibilidade, manutenção facilitada e conformidade em avaliações de código (*linters* e code reviews).
 
 ```text
-cursoinformatica/
-├── public/                 # Recursos estáticos, assets, imagens e CSS (landing.css)
-├── curso-basico.html       # Grade e aulas do módulo básico (Online)
-├── curso-avancado.html     # Grade do módulo avançado (Em desenvolvimento)
-└── index.html              # Página inicial, roteamento e formulários integrados
+gestao-equipamentos/
+│
+├── app.py                      # Camada de Apresentação (UI/UX, Dashboards, Navegação e Filtros)
+├── conexao_bd.py               # Camada de Acesso a Dados (DAO / Repository Pattern com Supabase)
+├── constantes.py               # Camada de Domínio (Constantes globais, status, enums e opções de UI)
+├── criar_tabelas_relacionais.sql # DDL, índices, constraints e carga de dados relacionais
+├── requirements.txt            # Dependências essenciais do projeto
+├── .gitignore                  # Regras de exclusão de arquivos temporários, segredos e venv
+│
+└── .streamlit/
+    └── secrets.toml            # Credenciais seguras de acesso ao Supabase (não versionado)
+```
+
+---
+
+## 🚀 Principais Módulos
+
+### 1. `app.py` (Interface do Usuário)
+- **Portal de Acesso Institucional (*Gatekeeper*)**: Design corporativo em abas com brasão vetorial, aviso de conformidade com a LGPD (Lei nº 13.709/2018), suporte a Supabase Auth, recuperação de senha, contingência e acesso direto para fiscais de contrato e diretoria.
+- **📊 Painel Executivo de SLA & Fiscalização**: Indicadores contratuais de nível de serviço (SLA), taxa de resolução, proporção de visitas preventivas vs corretivas, detecção automática de ordens de serviço com prazo expirado e painel de fiscalização prioritária.
+- **📄 Espelho Formal de Ordem de Serviço (Impressão & Assinatura)**: Gera termo oficial de atendimento e manutenção técnica com campos de assinatura para preposto de TI e responsável pelo posto de saúde, permitindo impressão e exportação em PDF.
+- **Abertura de Chamados Dinâmica**: Ao selecionar o porte da unidade (**Porte IV** com 29 setores ou **Porte I** com 8 setores), os postos de saúde e setores são filtrados e carregados diretamente do banco de dados em tempo real, sem valores fixos no código (*no hardcoding*).
+- **Filtros em Cascata e Relatórios Completos**: Pesquisa detalhada e exportação profissional para Excel/CSV com **17 colunas padronizadas**, incluindo botão para baixar o relatório filtrado atual ou a base histórica completa.
+- **Painel Administrativo**: Gestão de cadastros de setores, unidades, técnicos e equipamentos restrita a administradores.
+
+### 2. `conexao_bd.py` (Camada de Dados e Supabase)
+- **Singleton Connection**: Conexão única com o Supabase otimizada via `@st.cache_resource`.
+- **Autenticação Supabase Auth**: Métodos `fazer_login()` e `fazer_logout()` com suporte a contas corporativas.
+- **Consultas Relacionais (*JOINs*)**: Busca de chamados cruzando automaticamente chaves estrangeiras com nomes reais das unidades, setores, técnicos e equipamentos.
+- **Tratamento Defensivo e Fallbacks**: Mapeamento bidirecional transparente com suporte aos schemas atuais (`ticket`, `motivo`, `data_prevista`, etc.).
+
+### 3. `constantes.py` (Central de Constantes de Domínio)
+- Elimina completamente *magic strings* e duplicações.
+- Centraliza opções de ciclo de vida (`OPCOES_STATUS`), tipos de visita técnica (incluindo *Manutenção Programada Preventiva*), abas do sistema (`ABAS_SISTEMA`) e mapeamento completo de colunas para relatórios.
+
+---
+
+## 🔐 Segurança e Autenticação
+
+1. **Supabase Auth (Autenticação Nativa Supabase)**:
+   - Os usuários e técnicos autenticam-se com e-mail e senha cadastrados diretamente no Supabase Auth.
+   - O sistema detecta o nome do técnico a partir do e-mail cadastrado para vinculação e preenchimento automático nas ordens de serviço.
+2. **Senha Mestra Administrativa (Contingência)**:
+   - Expander exclusivo para administradores acessarem o painel de emergência caso haja interrupção temporária de internet ou autenticação federada.
+3. **Gestão de Segredos**:
+   - Tokens sensíveis (`SUPABASE_URL`, `SUPABASE_KEY` e `ADMIN_PASSWORD`) ficam isolados no `.streamlit/secrets.toml`, devidamente ignorado pelo `.gitignore`.
+
+---
+
+## 🛠️ Instalação e Execução Local
+
+### Pré-requisitos
+- Python 3.10 ou superior instalado.
+- Acesso ao projeto no Supabase com as tabelas criadas.
+
+### Passo a Passo
+
+1. **Clone o repositório ou acesse a pasta:**
+   ```bash
+   cd "gestao-equipamentos"
+   ```
+
+2. **Crie e ative um ambiente virtual (recomendado):**
+   ```bash
+   # Windows (PowerShell)
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+
+3. **Instale as dependências:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure as credenciais do Supabase:**
+   Crie ou edite o arquivo `.streamlit/secrets.toml` com o seguinte formato:
+   ```toml
+   SUPABASE_URL = "https://seu-projeto.supabase.co"
+   SUPABASE_KEY = "sua-chave-anon-ou-service-role"
+   ADMIN_PASSWORD = "sua_senha_mestra_aqui"
+   ```
+
+5. **Inicie a aplicação:**
+   ```bash
+   streamlit run app.py
+   ```
+
+A aplicação será aberta automaticamente em `http://localhost:8501`.
+
+---
+
+## 📊 Estrutura das Tabelas Relacionais (Supabase)
+
+| Tabela | Finalidade | Principais Colunas |
+| :--- | :--- | :--- |
+| `unidades` | Postos e Unidades de Saúde | `id`, `unidade`, `porte`, `zona`, `empresa` |
+| `setores` | Departamentos internos | `id`, `nome`, `porte` (29 Porte IV e 8 Porte I) |
+| `tecnicos` | Equipe de TI responsável | `id`, `nome`, `ativo` |
+| `equipamentos` | Catálogo de materiais/peças | `id`, `nome`, `categoria`, `ativo` |
+| `requisicoes` | Ordens de serviço e chamados | `id`, `data`, `unidade_id`, `setor_id`, `tecnico_id`, `equipamento_id`, `status`, `numero_chamado`, `quantidade` |
+
+Para popular ou atualizar a estrutura no Supabase, execute o script [`criar_tabelas_relacionais.sql`](file:///c:/Users/USUARIO/Documents/Pasta%20casa/gestao-equipamentos/criar_tabelas_relacionais.sql) diretamente no SQL Editor do painel do Supabase.
+
+---
+
+## 🌟 Padrões de Qualidade e Boas Práticas
+
+- **Tipagem Estática (PEP 484)**: 100% das funções possuem anotações de tipo (`typing.List`, `Dict`, `Tuple`, `Optional`).
+- **Docstrings Informativas (PEP 257)**: Todas as funções e módulos documentam claramente entradas, saídas e propósito.
+- **Zero Hardcoding**: Nenhuma lista de setores ou unidades fica chumbada no código; toda a lógica é orientada a dados no banco.
+- **Tratamento de Exceções**: Respostas amigáveis em telas de falha sem expor dados sensíveis do banco de dados ao usuário final.
